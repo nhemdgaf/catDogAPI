@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\v1\CatAPIController;
+use App\Http\Controllers\Api\v1\CatDogController;
+use App\Http\Controllers\Api\v1\DogAPIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+/**
+ * Public Routes
+ */
+Route::prefix('v1')->group(function () {
+    Route::get('/breeds', [CatDogController::class, 'getBreeds']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
